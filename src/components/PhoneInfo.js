@@ -11,14 +11,21 @@ class PhoneInfo extends Component {
     }
   };
 
+  handleRemove = () => {
+    // if deleted button clicked call with onRemove(id)
+    const { info, onRemove } = this.props;
+    onRemove(info.id);
+  };
+
   render() {
-    const { name, phone, id } = this.props.info;
+    const { name, phone } = this.props.info;
     return (
       <div className="phoneinfo__container">
         <div>
           <b>{name}</b>
         </div>
         <div>{phone}</div>
+        <button onClick={this.handleRemove}>Delete</button>
       </div>
     );
   }

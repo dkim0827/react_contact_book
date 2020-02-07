@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./components/css/App.css";
 import PhoneForm from "./components/PhoneForm";
 import PhoneInfoList from "./components/PhoneInfoList";
 
@@ -28,12 +29,22 @@ class App extends Component {
     });
   };
 
+  handleRemove = id => {
+    const { information } = this.state;
+    this.setState({
+      information: information.filter(info => info.id !== id)
+    });
+  };
+
   render() {
     const { information } = this.state;
     return (
       <div>
-        <PhoneForm onCreate={this.handleCreate} />
-        <PhoneInfoList data={this.state.information} />
+        <div className="welcome__header">
+          <h1>REACT CONTACT BOOK</h1>
+          <PhoneForm onCreate={this.handleCreate} />
+        </div>
+        <PhoneInfoList data={information} onRemove={this.handleRemove} />
       </div>
     );
   }

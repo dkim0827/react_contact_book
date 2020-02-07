@@ -27,17 +27,24 @@ class PhoneForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <label for="name">Name</label>
+        <br />
         <input
           placeholder="Name"
           value={this.state.name}
           onChange={this.handleChange}
           name="name"
+          id="name"
         />
+        <br />
+        <label for="phone">Phone</label>
+        <br />
         <input
           placeholder="Phone"
           value={this.state.phone}
           onChange={this.handleChange}
           name="phone"
+          id="phone"
         />
         <div>
           <button type="submit">Submit</button>
