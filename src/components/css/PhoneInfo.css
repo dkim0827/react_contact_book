@@ -1,9 +1,0 @@
-.phoneinfo__container {
-  border: 1px solid black;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
-  text-align: center;
-  padding: 8px;
-  margin: 8px;
-}

@@ -26,7 +26,7 @@ class PhoneForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="ui form">
         <label for="name">Name</label>
         <br />
         <input

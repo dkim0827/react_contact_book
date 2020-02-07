@@ -19,7 +19,14 @@ class App extends Component {
         name: "Dohee Lee",
         phone: "778-222-2222"
       }
-    ]
+    ],
+    keyword: ""
+  };
+
+  handleChange = e => {
+    this.setState({
+      keyword: e.target.value.toLowerCase()
+    });
   };
 
   handleCreate = data => {
@@ -47,15 +54,24 @@ class App extends Component {
   };
 
   render() {
-    const { information } = this.state;
+    const { information, keyword } = this.state;
+    const filteredList = information.filter(
+      info => info.name.toLowerCase().indexOf(keyword) !== -1
+    );
     return (
-      <div>
-        <div className="welcome__header">
-          <h1>REACT CONTACT BOOK</h1>
-          <PhoneForm onCreate={this.handleCreate} />
-        </div>
+            <div>
+              <h1>REACT CONTACT BOOK</h1>
+              <PhoneForm onCreate={this.handleCreate} />
+            </div>
+            <p>
+              <input
+                placeholder="Search with Name"
+                onChange={this.handleChange}
+                value={keyword}
+              />
+            </p>
         <PhoneInfoList
-          data={information}
+          data={filteredList}
           onRemove={this.handleRemove}
           onUpdate={this.handleUpdate}
         />
