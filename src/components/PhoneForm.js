@@ -8,13 +8,25 @@ class PhoneForm extends Component {
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value // Computed Property names
+    });
+  };
+
+  handleSubmit = e => {
+    // Prevnt Reloading
+    e.preventDefault();
+    // send this.state to parent through onCreate
+    this.props.onCreate(this.state);
+    // Reset
+    this.setState({
+      name: "",
+      phone: ""
     });
   };
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input
           placeholder="Name"
           value={this.state.name}
@@ -28,7 +40,7 @@ class PhoneForm extends Component {
           name="phone"
         />
         <div>
-          {this.state.name} {this.state.phone}
+          <button type="submit">Submit</button>
         </div>
       </form>
     );
