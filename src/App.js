@@ -36,6 +36,16 @@ class App extends Component {
     });
   };
 
+  handleUpdate = (id, data) => {
+    const { information } = this.state;
+    this.setState({
+      // if id === info.id render info && data else keep info
+      information: information.map(info =>
+        id === info.id ? { ...info, ...data } : info
+      )
+    });
+  };
+
   render() {
     const { information } = this.state;
     return (
@@ -44,7 +54,11 @@ class App extends Component {
           <h1>REACT CONTACT BOOK</h1>
           <PhoneForm onCreate={this.handleCreate} />
         </div>
-        <PhoneInfoList data={information} onRemove={this.handleRemove} />
+        <PhoneInfoList
+          data={information}
+          onRemove={this.handleRemove}
+          onUpdate={this.handleUpdate}
+        />
       </div>
     );
   }
